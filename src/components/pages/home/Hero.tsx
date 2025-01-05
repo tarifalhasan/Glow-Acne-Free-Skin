@@ -7,7 +7,7 @@ const Hero = () => {
       className=" overflow-hidden flex flex-col items-center justify-center relative bg-no-repeat bg-[100%_100%] bg-[length:100%_100%] h-full"
     >
       <img
-        src="/img/hero/1.png"
+        src="/img/hero/1.webp"
         className="hidden lg:block absolute inset-0 w-full"
         alt="hero section"
       />
@@ -48,7 +48,7 @@ const Hero = () => {
         alt="hero section"
       />
       <img
-        src="/img/hero/center-mask.png"
+        src="/img/hero/center-mask.webp"
         className="absolute max-w-[6550px] bottom-[-12rem] z-10 left-1/2 -translate-x-1/2 hidden lg:block"
         alt="hero section"
       />
