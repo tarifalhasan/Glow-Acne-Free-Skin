@@ -15,7 +15,7 @@ const Tokenomics = () => {
         <img
           className="w-full max-w-[850px] block mx-auto"
           src="/img/tokenmise.webp"
-          alt=""
+          alt="tokemise"
         />
       </div>
     </section>

@@ -112,6 +112,7 @@
   src: url("/fonts/FredokaOne-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @layer base {
@@ -135,31 +136,5 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%; /* 76.8px */
-  }
-}
-
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  width: 100%;
-  background-color: #f4f4f4; /* Optional */
-  padding: 10px 0;
-}
-
-.marquee-text {
-  display: inline-block;
-  animation: marquee 40s linear infinite;
-  font-family: "Inter", serif;
-  font-size: 14px;
-  color: #000;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
   }
 }
