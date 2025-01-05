@@ -39,7 +39,7 @@ const benefits = [
   },
 ];
 
-export function Benefits() {
+export default function Benefits() {
   return (
     <section
       id="benefits"

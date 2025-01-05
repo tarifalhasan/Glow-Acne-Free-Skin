@@ -1,23 +1,29 @@
 import { Header } from "@/components/ui/header";
-import { Benefits } from "./components/pages/home/Benefits";
-import Faqs from "./components/pages/home/Faqs";
-import Hero from "./components/pages/home/Hero";
-import Roadmap from "./components/pages/home/Roadmap";
-import Tokenomics from "./components/pages/home/Tokenomics";
+import { lazy, Suspense } from "react";
 import Footer from "./components/ui/footer";
+import Loader from "./components/ui/Loader";
 import TopHeader from "./components/ui/top-header";
+
+// Lazy load the components
+const Hero = lazy(() => import("./components/pages/home/Hero"));
+const Benefits = lazy(() => import("./components/pages/home/Benefits"));
+const Tokenomics = lazy(() => import("./components/pages/home/Tokenomics"));
+const Roadmap = lazy(() => import("./components/pages/home/Roadmap"));
+const Faqs = lazy(() => import("./components/pages/home/Faqs"));
+
 export default function Home() {
   return (
-    <main className="relative">
-      <TopHeader />
-      <Header />
-
-      <Hero />
-      <Benefits />
-      <Tokenomics />
-      <Roadmap />
-      <Faqs />
-      <Footer />
-    </main>
+    <Suspense fallback={<Loader />}>
+      <main className="relative">
+        <TopHeader />
+        <Header />
+        <Hero />
+        <Benefits />
+        <Tokenomics />
+        <Roadmap />
+        <Faqs />
+        <Footer />
+      </main>
+    </Suspense>
   );
 }

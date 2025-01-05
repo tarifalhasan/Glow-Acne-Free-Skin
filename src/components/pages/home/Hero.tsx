@@ -21,29 +21,29 @@ const Hero = () => {
         />
 
         <img
-          src="/img/hero/hero-bottle.png"
+          src="/img/hero/hero-bottle.webp"
           className="absolute lg:max-w-[160px] xl:max-w-[260px] 2xl:max-w-[360px] z-50  bottom-[10rem] right-[5%] xl:right-[6] 2xl:right-[10%] hidden lg:block"
           alt="hero"
         />
       </div>
       <img
-        src="/img/hero/bottom-shape.png"
+        src="/img/hero/bottom-shape.webp"
         className="absolute  z-40  bottom-0   w-full left-0 right-0"
         alt="hero section"
       />
 
       <img
-        src="/img/hero/2.png"
+        src="/img/hero/2.webp"
         className="hidden lg:block absolute z-0 inset-0 top-[600px] w-full"
-        alt=""
+        alt="hero"
       />
       <img
-        src="/img/hero/3.png"
+        src="/img/hero/3.webp"
         className="absolute max-w-[460px] z-20 xl:max-w-[512px] 2xl:max-w-fit bottom-[-9rem] 2xl:bottom-[-12rem] right-0 hidden lg:block"
         alt="hero section"
       />
       <img
-        src="/img/hero/right-mask.png"
+        src="/img/hero/right-mask.webp"
         className="absolute lg:max-w-[499px] xl:max-w-[560px] z-40 2xl:max-w-fit bottom-[-5rem] 2xl:bottom-[-8rem] left-0 hidden lg:block"
         alt="hero section"
       />
