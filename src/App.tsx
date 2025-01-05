@@ -8,9 +8,10 @@ import Footer from "./components/ui/footer";
 import TopHeader from "./components/ui/top-header";
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
       <TopHeader />
       <Header />
+
       <Hero />
       <Benefits />
       <Tokenomics />

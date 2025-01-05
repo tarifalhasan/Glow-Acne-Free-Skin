@@ -12,7 +12,7 @@ import { Menu } from "lucide-react";
 import { navigation_menus } from "@/data";
 export function Header() {
   return (
-    <header className=" w-full sticky top-0 py-6 z-50 bg-white/[.39]  backdrop-blur-md border-b border-[#D4F2FB]">
+    <header className=" w-full sticky top-0 py-6 z-[9999] bg-white/[.39]  backdrop-blur-md border-b border-[#D4F2FB]">
       <nav
         className="mx-auto flex container items-center justify-between "
         aria-label="Global"

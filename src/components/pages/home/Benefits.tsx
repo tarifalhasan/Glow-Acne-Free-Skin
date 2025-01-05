@@ -41,7 +41,10 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section id="benefits" className="py-16 scroll-mt-10 lg:py-24 px-4">
+    <section
+      id="benefits"
+      className="py-16 relative z-50 scroll-mt-10 lg:py-24 px-4"
+    >
       <div className="container mx-auto">
         <div className="text-center mb-5 ">
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-fredoka-one  mb-4 text-skin-dark-green">
@@ -54,13 +57,13 @@ export function Benefits() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {benefits.map((benefit) => (
             <div key={benefit.title} className="relative mt-12">
               <img
-                className="absolute w-full z-0 left-0 right-0 -top-6"
+                className="absolute w-full z-0 left-0 right-0 -top-2 2xl:-top-6"
                 src="/img/benifits/Union.png"
-                alt=""
+                alt="union"
               />
               <Card className="bg-white rounded-none w-[calc(100%-10px)] mx-auto shadow-none z-10 relative border-0">
                 <CardContent className="p-6">
@@ -80,9 +83,9 @@ export function Benefits() {
                 </CardContent>
               </Card>
               <img
-                className="absolute w-full left-0 right-0 z-0 -bottom-6"
+                className="absolute w-full left-0 right-0 z-0 -bottom-2 2xl:-bottom-6"
                 src="/img/benifits/Union.png"
-                alt=""
+                alt="union"
               />
             </div>
           ))}

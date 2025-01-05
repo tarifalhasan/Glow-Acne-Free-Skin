@@ -6,7 +6,7 @@ import { Info } from "lucide-react";
 
 export default function TokenPresale() {
   return (
-    <div className="e p-4 relative z-10">
+    <div className="e p-4 relative z-50">
       <div className=" mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-4">
