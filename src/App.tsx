@@ -1,7 +1,6 @@
 import { Header } from "@/components/ui/header";
 import { lazy, Suspense } from "react";
 import Footer from "./components/ui/footer";
-import { Loader } from "./components/ui/Loader";
 import TopHeader from "./components/ui/top-header";
 
 // Lazy load the components
@@ -13,7 +12,13 @@ const Faqs = lazy(() => import("./components/pages/home/Faqs"));
 
 export default function Home() {
   return (
-    <Suspense fallback={<Loader size={70} strokeWidth={2} duration={2} />}>
+    <Suspense
+      fallback={
+        <div className="fixed inset-0 flex items-center justify-center bg-primary z-[9999]">
+          <img src="/img/Spinner-5.gif" alt="Spinner-5.gif" />
+        </div>
+      }
+    >
       <main className="relative">
         <TopHeader />
         <Header />
