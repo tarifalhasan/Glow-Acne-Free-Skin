@@ -1,26 +1,60 @@
-const Loader = () => (
-  <div className="fixed inset-0 flex items-center justify-center bg-white z-[9999]">
-    <svg
-      className="animate-spin h-16 w-16 text-blue-500"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <circle
-        className="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="4"
-      ></circle>
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8v8H4z"
-      ></path>
-    </svg>
-  </div>
-);
+import React from "react";
 
-export default Loader;
+interface LoaderProps {
+  size?: number;
+  strokeWidth?: number;
+  duration?: number;
+}
+
+export const Loader: React.FC<LoaderProps> = ({
+  size = 40,
+  strokeWidth = 4,
+  duration = 1.5,
+}) => {
+  return (
+    <div className="loader-container" style={{ width: size, height: size }}>
+      <svg
+        className="loader"
+        viewBox="0 0 50 50"
+        style={{ width: "100%", height: "100%" }}
+      >
+        <circle
+          className="loader-circle"
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          stroke="url(#gradient)"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+        />
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#4338ca" />
+            <stop offset="100%" stopColor="#06b6d4" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <style>{`
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        .loader-container {
+          display: inline-block;
+        }
+        .loader {
+          animation: spin ${duration}s linear infinite;
+        }
+        .loader-circle {
+          stroke-dasharray: 150;
+          stroke-dashoffset: 75;
+        }
+      `}</style>
+    </div>
+  );
+};
