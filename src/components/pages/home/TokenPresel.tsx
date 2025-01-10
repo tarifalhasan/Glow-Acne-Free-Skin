@@ -3,8 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { Info } from "lucide-react";
+import { useState } from "react";
 
 export default function TokenPresale() {
+  const [selectedToken, setSelectedToken] = useState("Ether");
+
+  const handleSelectionToken = (token: string) => {
+    setSelectedToken(token);
+  };
+
   return (
     <div className="e p-4 relative z-50">
       <div className=" mx-auto space-y-6">
@@ -142,15 +149,39 @@ export default function TokenPresale() {
 
             {/* Payment Options */}
             <div className="flex gap-2">
-              <Button variant="outline" className="flex-1">
+              <Button
+                onClick={() => handleSelectionToken("Ether")}
+                variant="outline"
+                className="flex-1 "
+                style={{
+                  backgroundColor:
+                    selectedToken === "Ether" ? "#D3FAFF" : "#f0f0f0",
+                }}
+              >
                 <img src="/img/ethr.svg" className="w-4 h-4" alt="ether" />
                 Ether
               </Button>
-              <Button variant="outline" className="flex-1">
+              <Button
+                onClick={() => handleSelectionToken("USDT")}
+                variant="outline"
+                className="flex-1"
+                style={{
+                  backgroundColor:
+                    selectedToken === "USDT" ? "#D3FAFF" : "#f0f0f0",
+                }}
+              >
                 <img src="/img/usdt.svg" className="w-4 h-4" alt="ether" />
                 USDT
               </Button>
-              <Button variant="outline" className="flex-1">
+              <Button
+                onClick={() => handleSelectionToken("USDC")}
+                variant="outline"
+                className="flex-1"
+                style={{
+                  backgroundColor:
+                    selectedToken === "USDC" ? "#D3FAFF" : "#f0f0f0",
+                }}
+              >
                 <img src="/img/usdc.svg" className="w-4 h-4" alt="ether" />
                 USDC
               </Button>
@@ -195,12 +226,14 @@ export default function TokenPresale() {
                     fill="black"
                   />
                 </svg>
-                <span>Buy</span>
+                <span className="text-sm lg:text-base xl:text-lg font-bold">
+                  Buy
+                </span>
               </Button>
               <div className="text-center">Or</div>
               <Button
                 variant="outline"
-                className="w-full border-[#92DDE7] bg-[#D3FAFF]"
+                className="w-full border-[#92DDE7] bg-[#D3FAFF] text-sm lg:text-base xl:text-lg font-bold"
               >
                 Buy & Stake
               </Button>

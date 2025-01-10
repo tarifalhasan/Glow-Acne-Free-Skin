@@ -6,7 +6,7 @@ const TopHeader = () => {
       <Marquee pauseOnHover={true} className="[--duration:20s]">
         <p
           style={{ fontFamily: '"Inter", serif' }}
-          className="text-xs hidden lg:block font-medium text-black capitalize"
+          className="text-xs block font-medium text-black capitalize"
         >
           🚀Glow Acne-free skin Presale is NOW LIVE! Be part of the future—claim
           your discounted tokens and exclusive access to revolutionary

@@ -22,7 +22,7 @@ const Hero = () => {
 
         <img
           src="/img/hero/hero-bottle.webp"
-          className="absolute lg:max-w-[160px] xl:max-w-[260px] 2xl:max-w-[360px] z-50  bottom-[10rem] right-[5%] xl:right-[6] 2xl:right-[10%] hidden lg:block"
+          className="absolute lg:max-w-[160px] xl:max-w-[300px] 2xl:max-w-[360px] z-50  bottom-[10rem] right-[5%] xl:right-[6] 2xl:right-[10%] hidden lg:block"
           alt="hero"
         />
       </div>

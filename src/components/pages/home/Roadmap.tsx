@@ -1,16 +1,25 @@
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import autoplay from "embla-carousel-autoplay";
+
 const Roadmap = () => {
   return (
     <section
       id="roadmap"
       className="py-6 scroll-mt-10 lg:py-10 xl:py-24 lg:mt-10"
     >
-      <div className="container">
+      <div className="container relative overflow-hidden ">
         <div className="text-center mb-5 ">
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-fredoka-one  mb-4 text-skin-dark-green">
             Glow Acne Skin Roadmap
           </h2>
         </div>
-        <div className="flex flex-col mt-10 items-center relative lg:flex-row w-full gap-6 justify-between ">
+        <div className=" hidden lg:flex flex-col mt-10 items-center relative lg:flex-row w-full gap-6 justify-between ">
           <StepCard
             step={{
               id: 1,
@@ -99,6 +108,57 @@ const Roadmap = () => {
             clssName="w-full md:w-[calc(25%-56px)] lg:w-[calc(33%-56px)]"
           />
         </div>
+        <Carousel
+          className="lg:hidden"
+          plugins={[autoplay({ delay: 3000 })]} // Add autoplay plugin here
+        >
+          <CarouselContent>
+            <CarouselItem>
+              <StepCard
+                step={{
+                  id: 1,
+                  title: "Prototype Development",
+                  tasks: [
+                    "Development Of POI And AIVM",
+                    "Governance Framework",
+                    "Community Engagement",
+                  ],
+                }}
+                clssName="w-full"
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <StepCard
+                step={{
+                  id: 2,
+                  title: "Testnet Rollout",
+                  tasks: [
+                    "Development Of POI And AIVM",
+                    "Governance Framework",
+                    "Community Engagement",
+                  ],
+                }}
+                clssName="w-full"
+              />
+            </CarouselItem>
+            <CarouselItem>
+              <StepCard
+                step={{
+                  id: 2,
+                  title: "Testnet Rollout",
+                  tasks: [
+                    "Development Of POI And AIVM",
+                    "Governance Framework",
+                    "Community Engagement",
+                  ],
+                }}
+                clssName="w-full"
+              />
+            </CarouselItem>
+          </CarouselContent>
+          <CarouselPrevious className=" -left-[10px]" />
+          <CarouselNext className="-right-[10px]" />
+        </Carousel>
       </div>
     </section>
   );
