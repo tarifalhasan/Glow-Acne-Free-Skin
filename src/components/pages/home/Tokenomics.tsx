@@ -7,9 +7,10 @@ const Tokenomics = () => {
             Tokenomics
           </h2>
           <p className="max-w-xl font-figtree text-sm lg:text-base text-center mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            maximus, nulla ut commodo sagittis, sapien dui mattis dui. non
-            pulvinar lorem felis nec erat
+            Total token{" "}
+            <span className="text-[#007180] font-medium">
+              (10 Billion Tokens)
+            </span>
           </p>
         </div>
         <img

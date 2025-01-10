@@ -19,7 +19,7 @@ const Roadmap = () => {
             Glow Acne Skin Roadmap
           </h2>
         </div>
-        <div className=" hidden lg:flex flex-col mt-10 items-center relative lg:flex-row w-full gap-6 justify-between ">
+        <div className=" hidden  flex-col mt-10 items-center relative lg:flex-row w-full gap-6 justify-between ">
           <StepCard
             step={{
               id: 1,
@@ -109,11 +109,11 @@ const Roadmap = () => {
           />
         </div>
         <Carousel
-          className="lg:hidden"
+          className=""
           plugins={[autoplay({ delay: 3000 })]} // Add autoplay plugin here
         >
-          <CarouselContent>
-            <CarouselItem>
+          <CarouselContent className="justify-">
+            <CarouselItem className="basis-full  lg:basis-1/3 ">
               <StepCard
                 step={{
                   id: 1,
@@ -124,10 +124,11 @@ const Roadmap = () => {
                     "Community Engagement",
                   ],
                 }}
-                clssName="w-full"
+                clssName="w-full "
               />
             </CarouselItem>
-            <CarouselItem>
+
+            <CarouselItem className="basis-full  lg:basis-1/3">
               <StepCard
                 step={{
                   id: 2,
@@ -141,11 +142,25 @@ const Roadmap = () => {
                 clssName="w-full"
               />
             </CarouselItem>
-            <CarouselItem>
+            <CarouselItem className="basis-full  lg:basis-1/3">
               <StepCard
                 step={{
-                  id: 2,
-                  title: "Testnet Rollout",
+                  id: 3,
+                  title: "Mainnet Launch",
+                  tasks: [
+                    "Development Of POI And AIVM",
+                    "Governance Framework",
+                    "Community Engagement",
+                  ],
+                }}
+                clssName="w-full"
+              />
+            </CarouselItem>
+            <CarouselItem className="basis-full  lg:basis-1/3">
+              <StepCard
+                step={{
+                  id: 3,
+                  title: "Mainnet Launch",
                   tasks: [
                     "Development Of POI And AIVM",
                     "Governance Framework",
@@ -184,7 +199,7 @@ const StepCard: React.FC<StepCardProps> = ({ step, clssName }) => {
     <div
       key={step.id}
       className={cn(
-        "bg-white shadow-md w-full relative border rounded-lg p-6",
+        "bg-white/[63%] border relative overflow-hidden border-[#92E8F3]  w-full  rounded-[20px] p-6",
         clssName
       )}
     >
