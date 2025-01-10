@@ -59,15 +59,15 @@ const Roadmap = () => {
   return (
     <section
       id="roadmap"
-      className="py-6 scroll-mt-10 lg:py-10 xl:py-24 lg:mt-10"
+      className="py-14 scroll-mt-10 lg:py-10 xl:py-24 lg:mt-10"
     >
       <div className=" relative overflow-hidden ">
-        <div className="text-center mb-5 container ">
+        <div className="text-center mb-7 container ">
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-fredoka-one  mb-4 text-skin-dark-green">
             Glow Acne Skin Roadmap
           </h2>
         </div>
-        <Marquee pauseOnHover className="[--duration:30s] items-center">
+        <Marquee pauseOnHover className="[--duration:30s]  items-center">
           {ROADMAP_DATA.map((item) => (
             <div key={item.id} className="flex items-center w-full">
               <StepCard step={item} clssName="w-full " />
