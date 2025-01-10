@@ -1,15 +1,24 @@
+import TransitionErrorDialog from "@/components/pages/home/TransitionErrorDialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { Info, ShoppingBagIcon } from "lucide-react";
 import { useState } from "react";
-
+import TransitionSuccessDIalog from "./TransitionSuccessDIalog";
 export default function TokenPresale() {
   const [selectedToken, setSelectedToken] = useState("Ether");
-
+  const [transitionSubmitSuccessfully, setTranstionSubmitSuccessfully] =
+    useState(false);
+  const [transitionSubmitError, setTranstionSubmitError] = useState(false);
   const handleSelectionToken = (token: string) => {
     setSelectedToken(token);
+  };
+
+  const handleTransiotion = () => {
+    // if successfull transition
+    setTranstionSubmitSuccessfully(true);
+    // if error transition
+    // setTranstionSubmitError(true);
   };
 
   return (
@@ -152,7 +161,7 @@ export default function TokenPresale() {
               <Button
                 onClick={() => handleSelectionToken("Ether")}
                 variant="outline"
-                className="flex-1 "
+                className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
                 style={{
                   backgroundColor:
                     selectedToken === "Ether" ? "#D3FAFF" : "#f0f0f0",
@@ -164,7 +173,7 @@ export default function TokenPresale() {
               <Button
                 onClick={() => handleSelectionToken("USDT")}
                 variant="outline"
-                className="flex-1"
+                className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
                 style={{
                   backgroundColor:
                     selectedToken === "USDT" ? "#D3FAFF" : "#f0f0f0",
@@ -176,7 +185,7 @@ export default function TokenPresale() {
               <Button
                 onClick={() => handleSelectionToken("USDC")}
                 variant="outline"
-                className="flex-1"
+                className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
                 style={{
                   backgroundColor:
                     selectedToken === "USDC" ? "#D3FAFF" : "#f0f0f0",
@@ -187,6 +196,15 @@ export default function TokenPresale() {
               </Button>
             </div>
 
+            {/* Banalnce */}
+            <div className="flex items-center gap-1">
+              <div className="flex-1 h-[1px] bg-[#E9E9EA]" />
+              <p className="text-sm lg:text-base font-figtree text-[#4A4C56]">
+                ETH Balance: 0.01456
+              </p>
+              <div className="flex-1 h-[1px] bg-[#E9E9EA]" />
+            </div>
+
             {/* Exchange Inputs */}
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 lg:gap-4">
@@ -194,7 +212,45 @@ export default function TokenPresale() {
                 <label className="text-xs sm:text-sm mb-2 block">
                   Amount in ETH you pay
                 </label>
-                <Input type="number" placeholder="0.0" />
+                <div className="flex items-center justify-between bg-[#F6F8FA] border-[#DFE1E7] h-9 rounded-[12px] px-3">
+                  <input
+                    type="text"
+                    className="flex-1 border-0 outline-none focus:outline-none text-sm font-figtree text-black bg-transparent w-full placeholder:text-black"
+                    placeholder="0"
+                  />
+                  <svg
+                    width="11"
+                    height="16"
+                    viewBox="0 0 11 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.67185 10.6878L5.72553 15.8883C5.61252 16.0374 5.388 16.0372 5.27506 15.8883L1.32874 10.6878C1.2368 10.5669 1.37399 10.406 1.50765 10.4775L5.36735 12.5339C5.40779 12.5555 5.45287 12.5668 5.4987 12.5671C5.54454 12.5673 5.58974 12.5564 5.63041 12.5353L9.49294 10.4775C9.62659 10.406 9.76378 10.5669 9.67185 10.6878Z"
+                      fill="#6E6F80"
+                    />
+                    <path
+                      d="M9.67156 10.6878L5.72353 15.8906C5.65123 15.984 5.5 15.9275 5.5 15.8093V12.6805C5.50001 12.6576 5.50625 12.6351 5.51805 12.6154C5.52985 12.5958 5.54677 12.5797 5.567 12.5689L9.49265 10.4775C9.6263 10.406 9.76349 10.5669 9.67156 10.6878Z"
+                      fill="#585966"
+                    />
+                    <path
+                      d="M9.88757 6.80798L5.63186 9.04438C5.59131 9.06575 5.54617 9.07692 5.50033 9.07692C5.45449 9.07692 5.40935 9.06575 5.3688 9.04438L1.11309 6.80798C0.963875 6.72948 0.916141 6.53855 1.01055 6.39888L5.26626 0.124221C5.37781 -0.0409728 5.622 -0.0413971 5.73405 0.123867L9.99011 6.39888C10.0845 6.53855 10.0368 6.72948 9.88757 6.80798Z"
+                      fill="#6E6F80"
+                    />
+                    <path
+                      d="M9.88724 6.80795L5.63029 9.04499C5.57107 9.07624 5.5 9.02996 5.5 8.96303V0.113512C5.5 0.0474628 5.56948 0.000719298 5.62835 0.0305616C5.67084 0.0521698 5.70709 0.0842773 5.73368 0.123836L9.98975 6.39885C10.0842 6.53852 10.0365 6.72945 9.88724 6.80795Z"
+                      fill="#585966"
+                    />
+                    <path
+                      d="M5.36835 11.1319L0.701069 8.67912C0.634662 8.64422 0.58484 8.58436 0.562563 8.51272C0.540287 8.44109 0.54738 8.36353 0.582284 8.29713C0.617187 8.23072 0.677041 8.1809 0.748678 8.15862C0.820316 8.13634 0.897868 8.14344 0.964276 8.17834L5.49995 10.562L10.0356 8.17831C10.1739 8.10557 10.3449 8.15882 10.4176 8.29711C10.4525 8.36352 10.4596 8.44107 10.4373 8.5127C10.4151 8.58433 10.3652 8.64418 10.2988 8.67908L5.63156 11.1319C5.59097 11.1532 5.54581 11.1644 5.49996 11.1644C5.45411 11.1644 5.40894 11.1532 5.36835 11.1319Z"
+                      fill="#6E6F80"
+                    />
+                    <path
+                      d="M5.61913 0.0262453C5.56256 0.00573759 5.50033 0.0509253 5.50033 0.113509V4.82492C5.50033 4.99626 5.42212 5.15764 5.28928 5.26587C4.41331 5.97971 3.33581 6.203 2.22687 6.07104C1.80734 6.02112 1.59191 5.54173 1.82902 5.19207L5.26622 0.124187C5.34769 0.00354539 5.50118 -0.0294084 5.61913 0.0262453ZM4.97116 12.5938C4.78362 13.1209 4.35497 13.5303 3.78864 13.6608C3.68189 13.6854 3.57083 13.6423 3.50461 13.5551L1.32874 10.6878C1.2368 10.5669 1.37399 10.406 1.50765 10.4774L4.83669 12.2513C4.95967 12.3169 5.01787 12.4626 4.97116 12.5938Z"
+                      fill="#828396"
+                    />
+                  </svg>
+                </div>
               </div>
               <div className="flex  rotate-90 sm:rotate-0 sm:mt-5 justify-center">
                 <span className="text-2xl">⇄</span>
@@ -203,13 +259,23 @@ export default function TokenPresale() {
                 <label className="text-xs sm:text-sm mb-2 block">
                   Amount in GLAS you receive
                 </label>
-                <Input type="number" placeholder="0.0" />
+                <div className="flex items-center justify-between bg-[#F6F8FA] border-[#DFE1E7] h-9 rounded-[12px] px-3">
+                  <input
+                    type="text"
+                    className="flex-1 border-0 outline-none focus:outline-none text-sm font-figtree text-black bg-transparent w-full placeholder:text-black"
+                    placeholder="0"
+                  />
+                  <img src="/img/glas.png" alt="glas presale " />
+                </div>
               </div>
             </div>
 
             {/* Action Buttons */}
             <div className="space-y-4">
-              <Button className="w-full border text-sm lg:text-base xl:text-lg font-bold bg-[#92DDE7] hover:bg-[#92DDE7]/90 text-black">
+              <Button
+                onClick={handleTransiotion}
+                className="w-full  text-sm lg:text-base xl:text-lg font-bold bg-[#92DDE7] hover:bg-[#92DDE7]/90 text-black"
+              >
                 <ShoppingBagIcon />
                 <span className="">Buy</span>
               </Button>
@@ -258,6 +324,15 @@ export default function TokenPresale() {
           </CardContent>
         </Card>
       </div>
+
+      <TransitionSuccessDIalog
+        isOpen={transitionSubmitSuccessfully}
+        setIsOpen={setTranstionSubmitSuccessfully}
+      />
+      <TransitionErrorDialog
+        isOpen={transitionSubmitError}
+        setIsOpen={setTranstionSubmitError}
+      />
     </div>
   );
 }
