@@ -159,40 +159,6 @@ const StepCard: React.FC<StepCardProps> = ({ step, clssName }) => {
         <ul className="mt-4 text-sm text-gray-600 space-y-2">
           {step.tasks.map((task, idx) => (
             <li key={idx} className="flex gap-2 items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={16}
-                height={17}
-                viewBox="0 0 16 17"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_3457_8619)">
-                  <path
-                    d="M4.44212 14.7898L2.40909 16.1875V0.8125L4.44212 2.21022M2.34556 14.7898L0.3125 16.1875V0.8125L2.34556 2.21022M15.6875 8.5L4.50566 16.1875V0.8125L15.6875 8.5Z"
-                    stroke="#92E8F3"
-                    strokeWidth="0.625003"
-                    strokeMiterlimit="22.9256"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M12.3781 8.50005L6.38086 4.37695V12.6231L12.3781 8.50005Z"
-                    fill="#1D1F2C"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_3457_8619">
-                    <rect
-                      width={16}
-                      height={16}
-                      fill="white"
-                      transform="translate(0 0.5)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
               <span className="text-base lg:text-lg font-normal text-skin-gray-black">
                 {task}
               </span>
