@@ -27,27 +27,27 @@ const Hero = () => {
         className="hidden lg:block absolute inset-0 w-full"
         alt="hero section"
       />
-      <div className="relative w-full h-full pt-16 pb-[8rem]">
+      <div className="relative container w-full h-full pt-16 pb-[8rem]">
         <TokenPresale />
 
         <img
           src="/img/hero/hero.gif"
           alt="hero"
-          className="absolute lg:max-w-[160px] xl:max-w-[360px] z-50 hidden lg:block"
+          className="absolute lg:max-w-[160px] xl:max-w-[260px] 2xl:max-w-[450px] left-[5%] 2xl:left-[-15rem] z-50 hidden lg:block"
           style={{
             bottom: `calc(36rem - ${Math.min(scrollY * 0.5, 240)}px)`,
-            left: "5%",
+
             transform: `translateY(${Math.min(scrollY * 0.5, 240)}px)`,
           }}
         />
 
         <img
           src="/img/hero/hero-product.webp"
-          className="absolute lg:max-w-[200px] xl:max-w-[300px] 2xl:max-w-[450px] z-50 hidden lg:block"
+          className="absolute lg:max-w-[200px] right-[5%] 2xl:right-[-15rem] xl:max-w-[300px] 2xl:max-w-[550px] z-50 hidden lg:block"
           alt="hero"
           style={{
             bottom: `calc(36rem - ${Math.min(scrollY * 0.5, 240)}px)`,
-            right: "5%",
+
             transform: `translateY(${Math.min(scrollY * 0.5, 240)}px)`,
           }}
         />
