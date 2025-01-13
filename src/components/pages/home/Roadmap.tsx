@@ -88,10 +88,6 @@ const Roadmap = () => {
           navigation
           pagination={{
             clickable: true,
-            renderBullet: (className) => {
-              // Customize the bullet with HTML and className
-              return `<span class="${className} custom-bullet"></span>`;
-            },
           }}
           className="h-full"
           onSlideChange={(swiper) => {
