@@ -1,34 +1,60 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import TokenPresale from "./TokenPresel";
 
 const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
+
   return (
-    <section
-      style={{}}
-      className=" overflow-hidden flex flex-col items-center justify-center relative bg-no-repeat bg-[100%_100%] bg-[length:100%_100%] h-full"
-    >
+    <section className="overflow-hidden flex flex-col items-center justify-center relative bg-no-repeat bg-[100%_100%] bg-[length:100%_100%] h-full">
       <img
         src="/img/hero/1.webp"
         className="hidden lg:block absolute inset-0 w-full"
         alt="hero section"
       />
-      <div className="relative  w-full h-full  pt-16 pb-[8rem]">
+      <div className="relative w-full h-full pt-16 pb-[8rem]">
         <TokenPresale />
 
         <img
           src="/img/hero/hero.gif"
           alt="hero"
-          className="absolute lg:max-w-[160px] xl:max-w-[260px] z-50 bottom-[36rem] 2xl:bottom-[27rem] left-[5%] xl:left-[6] 2xl:left-[10%] hidden lg:block"
+          className="absolute lg:max-w-[160px] xl:max-w-[360px] z-50 hidden lg:block"
+          style={{
+            bottom: `calc(36rem - ${Math.min(scrollY * 0.5, 240)}px)`,
+            left: "5%",
+            transform: `translateY(${Math.min(scrollY * 0.5, 240)}px)`,
+          }}
         />
 
         <img
-          src="/img/hero/hero-bottle.webp"
-          className="absolute lg:max-w-[200px] xl:max-w-[300px] 2xl:max-w-[360px] z-50 bottom-[36rem] 2xl:bottom-[26rem] right-[5%] xl:right-[6] 2xl:right-[10%] hidden lg:block"
+          src="/img/hero/hero-product.webp"
+          className="absolute lg:max-w-[200px] xl:max-w-[300px] 2xl:max-w-[450px] z-50 hidden lg:block"
           alt="hero"
+          style={{
+            bottom: `calc(36rem - ${Math.min(scrollY * 0.5, 240)}px)`,
+            right: "5%",
+            transform: `translateY(${Math.min(scrollY * 0.5, 240)}px)`,
+          }}
         />
       </div>
       <img
         src="/img/hero/bottom-shape.webp"
-        className="absolute  z-40  bottom-0   w-full left-0 right-0"
+        className="absolute z-40 bottom-0 w-full left-0 right-0"
         alt="hero section"
       />
 
@@ -38,7 +64,7 @@ const Hero = () => {
         alt="hero"
       />
       <img
-        src="/img/hero/3.webp"
+        src="/img/hero/left-globe.webp"
         className="absolute max-w-[460px] z-20 xl:max-w-[512px] 2xl:max-w-max w-full bottom-[-9rem] 2xl:bottom-[-8rem] right-0 hidden lg:block"
         alt="hero section"
       />
@@ -49,7 +75,7 @@ const Hero = () => {
       />
       <img
         src="/img/hero/center-mask.webp"
-        className="absolute  w-full max-w-[600px] 2xl:max-w-[980px] bottom-[-12rem] z-10 left-1/2 -translate-x-1/2 hidden lg:block"
+        className="absolute w-full max-w-[600px] 2xl:max-w-[980px] bottom-[-12rem] z-10 left-1/2 -translate-x-1/2 hidden lg:block"
         alt="hero section"
       />
     </section>
