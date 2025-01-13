@@ -7,6 +7,23 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@swiper": "./node_modules/swiper",
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+        @import "./src/presentation/config/bootstrap/_custom.scss";
+        `,
+        silenceDeprecations: [
+          "mixed-decls",
+          "legacy-js-api",
+          "color-functions",
+          "import",
+          "global-builtin",
+        ],
+      },
     },
   },
 });

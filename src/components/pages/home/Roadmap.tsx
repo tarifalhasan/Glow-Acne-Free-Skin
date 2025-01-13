@@ -1,3 +1,9 @@
+import { useState } from "react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 const ROADMAP_DATA = [
   {
     id: 1,
@@ -7,6 +13,7 @@ const ROADMAP_DATA = [
       "Governance Framework",
       "Community Engagement",
     ],
+    highlight: true,
   },
   {
     id: 2,
@@ -16,6 +23,7 @@ const ROADMAP_DATA = [
       "Governance Framework",
       "Community Engagement",
     ],
+    highlight: false,
   },
   {
     id: 3,
@@ -25,6 +33,7 @@ const ROADMAP_DATA = [
       "Governance Framework",
       "Community Engagement",
     ],
+    highlight: false,
   },
   {
     id: 4,
@@ -34,6 +43,7 @@ const ROADMAP_DATA = [
       "Governance Framework",
       "Community Engagement",
     ],
+    highlight: false,
   },
   {
     id: 5,
@@ -43,6 +53,7 @@ const ROADMAP_DATA = [
       "Governance Framework",
       "Community Engagement",
     ],
+    highlight: false,
   },
   {
     id: 6,
@@ -52,54 +63,106 @@ const ROADMAP_DATA = [
       "Governance Framework",
       "Community Engagement",
     ],
+    highlight: false,
   },
 ];
 
 const Roadmap = () => {
+  const [lastVisibleIndex, setLastVisibleIndex] = useState(0);
+
   return (
     <section
       id="roadmap"
       className="py-14 scroll-mt-10 lg:py-10 xl:py-24 lg:mt-10"
     >
-      <div className=" relative overflow-hidden ">
-        <div className="text-center mb-7 container ">
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-fredoka-one  mb-4 text-skin-dark-green">
+      <div className="relative container overflow-hidden">
+        <div className="text-center mb-7 container">
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-fredoka-one mb-4 text-skin-dark-green">
             Glow Acne Skin Roadmap
           </h2>
         </div>
-        <Marquee pauseOnHover className="[--duration:30s]  items-center">
-          {ROADMAP_DATA.map((item) => (
-            <div key={item.id} className="flex items-center w-full">
-              <StepCard step={item} clssName="w-full " />
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={56}
-                height={57}
-                viewBox="0 0 56 57"
-                fill="none"
-                className="ml-4"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M35.7621 8.8125H44.4292L54.9062 28.5L44.4292 48.1875H35.7621L46.2392 28.5L35.7621 8.8125ZM1.09375 8.8125H9.76084L20.2379 28.5L9.76084 48.1875H1.09375L11.5708 28.5L1.09375 8.8125Z"
-                  stroke="#6AC6D2"
-                  strokeWidth="1.87501"
-                  strokeMiterlimit="22.9256"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={30}
+          slidesPerView={1}
+          navigation
+          pagination={{
+            clickable: true,
+            renderBullet: (className) => {
+              // Customize the bullet with HTML and className
+              return `<span class="${className} custom-bullet"></span>`;
+            },
+          }}
+          className="h-full"
+          onSlideChange={(swiper) => {
+            // Calculate the last visible slide based on Swiper's `activeIndex` and visible slides
+            const visibleSlides = swiper.slidesPerViewDynamic();
+            setLastVisibleIndex(swiper.activeIndex + visibleSlides - 1);
+          }}
+          onSwiper={(swiper) => {
+            // Initialize the last visible slide on first render
+            const visibleSlides = swiper.slidesPerViewDynamic();
+            setLastVisibleIndex(swiper.activeIndex + visibleSlides - 1);
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: 50,
+            },
+            1240: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
+        >
+          {ROADMAP_DATA.map((item, index) => (
+            <SwiperSlide key={item.id}>
+              <div className="flex items-center pb-16 justify-center w-full">
+                <StepCard
+                  step={item}
+                  clssName="w-full"
+                  highlight={item.highlight}
                 />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M18.4277 8.8125H27.0948L37.5719 28.5L27.0948 48.1875H18.4277L28.9048 28.5L18.4277 8.8125Z"
-                  fill="#007180"
-                />
-              </svg>
-            </div>
+                {/* Conditionally Render Arrow */}
+                {index !== lastVisibleIndex && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={56}
+                    height={57}
+                    viewBox="0 0 56 57"
+                    fill="none"
+                    className="ml-4"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M35.7621 8.8125H44.4292L54.9062 28.5L44.4292 48.1875H35.7621L46.2392 28.5L35.7621 8.8125ZM1.09375 8.8125H9.76084L20.2379 28.5L9.76084 48.1875H1.09375L11.5708 28.5L1.09375 8.8125Z"
+                      stroke="#6AC6D2"
+                      strokeWidth="1.87501"
+                      strokeMiterlimit="22.9256"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M18.4277 8.8125H27.0948L37.5719 28.5L27.0948 48.1875H18.4277L28.9048 28.5L18.4277 8.8125Z"
+                      fill="#007180"
+                    />
+                  </svg>
+                )}
+              </div>
+            </SwiperSlide>
           ))}
-        </Marquee>
+        </Swiper>
       </div>
     </section>
   );
@@ -107,7 +170,6 @@ const Roadmap = () => {
 
 export default Roadmap;
 
-import { Marquee } from "@/components/ui/marquee";
 import { cn } from "@/lib/utils";
 import React from "react";
 
@@ -119,15 +181,17 @@ interface StepCardProps {
     imageSrc?: string; // Optional field for additional image
   };
   clssName?: string;
+  highlight?: boolean;
 }
 
-const StepCard: React.FC<StepCardProps> = ({ step, clssName }) => {
+const StepCard: React.FC<StepCardProps> = ({ step, clssName, highlight }) => {
   return (
     <div
       key={step.id}
       className={cn(
-        "bg-white/[63%] border relative overflow-hidden border-[#92E8F3]  w-full  rounded-[20px] p-6",
-        clssName
+        "bg-white/[63%] border lg:w-[320px] relative overflow-hidden border-[#92E8F3]  w-full  rounded-[20px] p-6",
+        clssName,
+        highlight && "border-4 border-[#007180]"
       )}
     >
       <img
