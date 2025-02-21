@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Info, ShoppingBagIcon } from "lucide-react";
 import { useState } from "react";
+import ReferralInput from "./ReferralInput";
 import TransitionSuccessDIalog from "./TransitionSuccessDIalog";
 export default function TokenPresale() {
   const [selectedToken, setSelectedToken] = useState("ETH");
@@ -21,6 +22,12 @@ export default function TokenPresale() {
     // setTranstionSubmitError(true);
   };
 
+  const handleCopyLink = () => {
+    const input = document.querySelector("input");
+    if (input) {
+      navigator.clipboard.writeText(input.value);
+    }
+  };
   return (
     <div className="e p-4 relative z-50">
       <div className=" mx-auto space-y-6">
@@ -116,186 +123,253 @@ export default function TokenPresale() {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="space-y-6 pt-6">
-            <h3 className="text-xl lg:text-2xl font-bold text-center">
-              Stage 1 - Buy $GLAS NOW
-            </h3>
+          <CardContent className="space-y-6 px-0 pb-0 pt-6">
+            <div className="space-y-6 px-5">
+              <h3 className="text-xl lg:text-2xl font-bold text-center">
+                Stage 1 - Buy $GLAS NOW
+              </h3>
 
-            {/* Price Information */}
-            <div className="flex justify-between gap-4 text-sm">
-              <div className="bg-primary  rounded-md px-4 py-2">
-                <p className="text-base font-normal text-black font-figtree">
-                  Current Price: $0.015
-                </p>
-              </div>
-              <div className="bg-primary  rounded-md px-4 py-2">
-                <p className="text-base font-normal text-black font-figtree">
-                  Next Price: $0.08
-                </p>
-              </div>
-            </div>
-
-            {/* Progress Bar */}
-            <Progress value={50} className="h-2" />
-
-            {/* Stats */}
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-base lg:text-lg font-normal font-familjen">
-                  USD Raised:
-                </span>
-                <span className="text-xl font-semibold">
-                  $100 / $100,000,000
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-base lg:text-lg font-normal font-familjen">
-                  Tokens Sold:
-                </span>
-                <span className="text-xl font-semibold">100 / 100,000,000</span>
-              </div>
-            </div>
-
-            {/* Payment Options */}
-            <div className="flex gap-2">
-              <Button
-                onClick={() => handleSelectionToken("ETH")}
-                variant="outline"
-                className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
-                style={{
-                  backgroundColor:
-                    selectedToken === "ETH" ? "#D3FAFF" : "#f0f0f0",
-                }}
-              >
-                <img src="/img/ethr.svg" className="w-4 h-4" alt="ether" />
-                Ether
-              </Button>
-              <Button
-                onClick={() => handleSelectionToken("USDT")}
-                variant="outline"
-                className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
-                style={{
-                  backgroundColor:
-                    selectedToken === "USDT" ? "#D3FAFF" : "#f0f0f0",
-                }}
-              >
-                <img src="/img/usdt.svg" className="w-4 h-4" alt="usdt" />
-                USDT
-              </Button>
-              <Button
-                onClick={() => handleSelectionToken("USDC")}
-                variant="outline"
-                className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
-                style={{
-                  backgroundColor:
-                    selectedToken === "USDC" ? "#D3FAFF" : "#f0f0f0",
-                }}
-              >
-                <img src="/img/usdc.svg" className="w-4 h-4" alt="usdc" />
-                USDC
-              </Button>
-            </div>
-
-            {/* Banalnce */}
-            <div className="flex items-center gap-1">
-              <div className="flex-1 h-[1px] bg-[#E9E9EA]" />
-              <p className="text-sm lg:text-base font-figtree text-[#4A4C56]">
-                ETH Balance: 0.01456
-              </p>
-              <div className="flex-1 h-[1px] bg-[#E9E9EA]" />
-            </div>
-
-            {/* Exchange Inputs */}
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 lg:gap-4">
-              <div>
-                <label className="text-xs sm:text-sm mb-2 block">
-                  Amount in {selectedToken} you pay
-                </label>
-                <div className="flex items-center justify-between bg-[#F6F8FA] border-[#DFE1E7] h-9 rounded-[12px] px-3">
-                  <input
-                    type="text"
-                    className="flex-1 border-0 outline-none focus:outline-none text-sm font-figtree text-black bg-transparent w-full placeholder:text-black"
-                    placeholder="0"
-                  />
-
-                  {selectedToken === "ETH" ? (
-                    <img src="/img/ethr.svg" className="w-4 h-4" alt="ether" />
-                  ) : selectedToken === "USDT" ? (
-                    <img src="/img/usdt.svg" className="w-4 h-4" alt="usdt" />
-                  ) : (
-                    <img src="/img/usdc.svg" className="w-4 h-4" alt="usdc" />
-                  )}
+              {/* Price Information */}
+              <div className="flex justify-between gap-4 text-sm">
+                <div className="bg-primary  rounded-md px-4 py-2">
+                  <p className="text-base font-normal text-black font-figtree">
+                    Current Price: $0.015
+                  </p>
+                </div>
+                <div className="bg-primary  rounded-md px-4 py-2">
+                  <p className="text-base font-normal text-black font-figtree">
+                    Next Price: $0.08
+                  </p>
                 </div>
               </div>
-              <div className="flex  rotate-90 sm:rotate-0 sm:mt-5 justify-center">
-                <span className="text-2xl">⇄</span>
-              </div>
-              <div>
-                <label className="text-xs sm:text-sm mb-2 block">
-                  Amount in GLAS you receive
-                </label>
-                <div className="flex items-center justify-between bg-[#F6F8FA] border-[#DFE1E7] h-9 rounded-[12px] px-3">
-                  <input
-                    type="text"
-                    className="flex-1 border-0 outline-none focus:outline-none text-sm font-figtree text-black bg-transparent w-full placeholder:text-black"
-                    placeholder="0"
-                  />
-                  <img src="/img/glas.png" alt="glas presale " />
+
+              {/* Progress Bar */}
+              <Progress value={50} className="h-2" />
+
+              {/* Stats */}
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-base lg:text-lg font-normal font-familjen">
+                    USD Raised:
+                  </span>
+                  <span className="text-xl font-semibold">
+                    $100 / $100,000,000
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-base lg:text-lg font-normal font-familjen">
+                    Tokens Sold:
+                  </span>
+                  <span className="text-xl font-semibold">
+                    100 / 100,000,000
+                  </span>
                 </div>
               </div>
-            </div>
 
-            {/* Action Buttons */}
-            <div className="space-y-4">
-              <Button
-                onClick={handleTransiotion}
-                className="w-full  text-sm lg:text-base xl:text-lg font-bold bg-[#92DDE7] hover:bg-[#92DDE7]/90 text-black"
-              >
-                <ShoppingBagIcon />
-                <span className="">Buy</span>
-              </Button>
-              <div className="text-center">Or</div>
-              <Button
-                variant="outline"
-                className="w-full border-[#92DDE7] bg-[#D3FAFF] text-sm lg:text-base xl:text-lg font-bold"
-              >
-                Buy & Stake
-              </Button>
-            </div>
-
-            {/* Footer Links */}
-            <div className="flex justify-between text-sm text-[#000]">
-              <button className="flex  items-center gap-2">
-                <Info color="#A5A5AB" />
-                How To Buy
-              </button>
-              <button className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="20"
-                  viewBox="0 0 21 20"
-                  fill="none"
+              {/* Payment Options */}
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => handleSelectionToken("ETH")}
+                  variant="outline"
+                  className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
+                  style={{
+                    backgroundColor:
+                      selectedToken === "ETH" ? "#D3FAFF" : "#f0f0f0",
+                  }}
                 >
-                  <rect
-                    x="18.833"
-                    y="2.5"
-                    width="15"
-                    height="16.6667"
-                    rx="4"
-                    transform="rotate(90 18.833 2.5)"
-                    stroke="#A5A5AB"
-                    strokeWidth="1.5"
+                  <img src="/img/ethr.svg" className="w-4 h-4" alt="ether" />
+                  Ether
+                </Button>
+                <Button
+                  onClick={() => handleSelectionToken("USDT")}
+                  variant="outline"
+                  className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
+                  style={{
+                    backgroundColor:
+                      selectedToken === "USDT" ? "#D3FAFF" : "#f0f0f0",
+                  }}
+                >
+                  <img src="/img/usdt.svg" className="w-4 h-4" alt="usdt" />
+                  USDT
+                </Button>
+                <Button
+                  onClick={() => handleSelectionToken("USDC")}
+                  variant="outline"
+                  className="flex-1 border h-10 rounded-[12px] border-[#DFE1E7]"
+                  style={{
+                    backgroundColor:
+                      selectedToken === "USDC" ? "#D3FAFF" : "#f0f0f0",
+                  }}
+                >
+                  <img src="/img/usdc.svg" className="w-4 h-4" alt="usdc" />
+                  USDC
+                </Button>
+              </div>
+
+              {/* Banalnce */}
+              <div className="flex items-center gap-1">
+                <div className="flex-1 h-[1px] bg-[#E9E9EA]" />
+                <p className="text-sm lg:text-base font-figtree text-[#4A4C56]">
+                  ETH Balance: 0.01456
+                </p>
+                <div className="flex-1 h-[1px] bg-[#E9E9EA]" />
+              </div>
+
+              {/* Exchange Inputs */}
+
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 lg:gap-4">
+                <div>
+                  <label className="text-xs sm:text-sm mb-2 block">
+                    Amount in {selectedToken} you pay
+                  </label>
+                  <div className="flex items-center justify-between bg-[#F6F8FA] border-[#DFE1E7] h-9 rounded-[12px] px-3">
+                    <input
+                      type="text"
+                      className="flex-1 border-0 outline-none focus:outline-none text-sm font-figtree text-black bg-transparent w-full placeholder:text-black"
+                      placeholder="0"
+                    />
+
+                    {selectedToken === "ETH" ? (
+                      <img
+                        src="/img/ethr.svg"
+                        className="w-4 h-4"
+                        alt="ether"
+                      />
+                    ) : selectedToken === "USDT" ? (
+                      <img src="/img/usdt.svg" className="w-4 h-4" alt="usdt" />
+                    ) : (
+                      <img src="/img/usdc.svg" className="w-4 h-4" alt="usdc" />
+                    )}
+                  </div>
+                </div>
+                <div className="flex  rotate-90 sm:rotate-0 sm:mt-5 justify-center">
+                  <span className="text-2xl">⇄</span>
+                </div>
+                <div>
+                  <label className="text-xs sm:text-sm mb-2 block">
+                    Amount in GLAS you receive
+                  </label>
+                  <div className="flex items-center justify-between bg-[#F6F8FA] border-[#DFE1E7] h-9 rounded-[12px] px-3">
+                    <input
+                      type="text"
+                      className="flex-1 border-0 outline-none focus:outline-none text-sm font-figtree text-black bg-transparent w-full placeholder:text-black"
+                      placeholder="0"
+                    />
+                    <img src="/img/glas.png" alt="glas presale " />
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-4">
+                <Button
+                  onClick={handleTransiotion}
+                  className="w-full  text-sm lg:text-base xl:text-lg font-bold bg-[#92DDE7] hover:bg-[#92DDE7]/90 text-black"
+                >
+                  <ShoppingBagIcon />
+                  <span className="">Buy</span>
+                </Button>
+                <div className="text-center">Or</div>
+                <Button
+                  variant="outline"
+                  className="w-full border-[#92DDE7] bg-[#D3FAFF] text-sm lg:text-base xl:text-lg font-bold"
+                >
+                  Buy & Stake
+                </Button>
+              </div>
+
+              {/* Footer Links */}
+              <div className="flex justify-between text-sm text-[#000]">
+                <button className="flex  items-center gap-2">
+                  <Info color="#A5A5AB" />
+                  How To Buy
+                </button>
+                <button className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="21"
+                    height="20"
+                    viewBox="0 0 21 20"
+                    fill="none"
+                  >
+                    <rect
+                      x="18.833"
+                      y="2.5"
+                      width="15"
+                      height="16.6667"
+                      rx="4"
+                      transform="rotate(90 18.833 2.5)"
+                      stroke="#A5A5AB"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M10.4997 8.13658C9.98822 8.59435 9.66634 9.25958 9.66634 10C9.66634 10.7404 9.98822 11.4057 10.4997 11.8634M10.4997 8.13658C10.942 7.74071 11.526 7.5 12.1663 7.5C13.5471 7.5 14.6663 8.61929 14.6663 10C14.6663 11.3807 13.5471 12.5 12.1663 12.5C11.526 12.5 10.942 12.2593 10.4997 11.8634M10.4997 8.13658C10.0574 7.74071 9.4733 7.5 8.83301 7.5C7.4523 7.5 6.33301 8.61929 6.33301 10C6.33301 11.3807 7.4523 12.5 8.83301 12.5C9.4733 12.5 10.0574 12.2593 10.4997 11.8634"
+                      stroke="#A5A5AB"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                  Pay With Card
+                </button>
+              </div>
+            </div>
+
+            {/* <div>Rewards Referral 🎉</div> */}
+
+            <div className="bg-[#F6F8FA] sr rounded-[16px] mx-auto p-2 lg:p-6 space-y-6">
+              <div className="text-left mb-6">
+                <div className="relative aspect-[4/2] flex justify-center">
+                  <img
+                    src="/img/referal.svg"
+                    className="absolute w-full h-full inset-0"
+                    alt=""
                   />
-                  <path
-                    d="M10.4997 8.13658C9.98822 8.59435 9.66634 9.25958 9.66634 10C9.66634 10.7404 9.98822 11.4057 10.4997 11.8634M10.4997 8.13658C10.942 7.74071 11.526 7.5 12.1663 7.5C13.5471 7.5 14.6663 8.61929 14.6663 10C14.6663 11.3807 13.5471 12.5 12.1663 12.5C11.526 12.5 10.942 12.2593 10.4997 11.8634M10.4997 8.13658C10.0574 7.74071 9.4733 7.5 8.83301 7.5C7.4523 7.5 6.33301 8.61929 6.33301 10C6.33301 11.3807 7.4523 12.5 8.83301 12.5C9.4733 12.5 10.0574 12.2593 10.4997 11.8634"
-                    stroke="#A5A5AB"
-                    strokeWidth="1.5"
-                  />
-                </svg>
-                Pay With Card
-              </button>
+                </div>
+
+                <h2 className="text-xl mt-6 font-bold text-[#007180] mb-2">
+                  Crypto Rewards Referral 🎉
+                </h2>
+                <p className="text-sm lg:text-base leading-[160%] text-[#1D1F2C] mb-1">
+                  Refer & Earn! <span className="text-[#39B0C0]">Get 10%</span>{" "}
+                  In ETH, USDT, Or USDC From Your Friends' Purchases Withdraw
+                  Anytime! Plus, They{" "}
+                  <span className="text-[#39B0C0]">Get 10% Extra</span> Tokens!
+                </p>
+              </div>
+
+              <ReferralInput referralLink={"https://fiverr.com"} />
+
+              <div className="space-y-3 w-full">
+                {[
+                  { symbol: "ETH", amount: "1.5 ETH", icon: "/img/ethr.svg" },
+                  { symbol: "USDC", amount: "500 USDC", icon: "/img/usdc.svg" },
+                  { symbol: "USDT", amount: "500 USDT", icon: "/img/usdt.svg" },
+                ].map((crypto) => (
+                  <div
+                    key={crypto.symbol}
+                    className="flex items-center justify-between p-3 bg-[#F8FAFB] rounded-lg"
+                  >
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={crypto.icon}
+                        className="w-4 h-4"
+                        alt={crypto.amount}
+                      />
+                      <span className="text-xl">{crypto.symbol}</span>
+                    </div>
+                    <div>
+                      <span className="font-medium">{crypto.amount}</span>
+                    </div>
+                    <div className="flex  items-center gap-4">
+                      <Button
+                        className="bg-[#92DDE7] hover:bg-[#7DD8D7] text-[#1D1F2C]"
+                        size="sm"
+                      >
+                        Withdraw
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </CardContent>
         </Card>
