@@ -22,12 +22,6 @@ export default function TokenPresale() {
     // setTranstionSubmitError(true);
   };
 
-  const handleCopyLink = () => {
-    const input = document.querySelector("input");
-    if (input) {
-      navigator.clipboard.writeText(input.value);
-    }
-  };
   return (
     <div className="e p-4 relative z-50">
       <div className=" mx-auto space-y-6">
