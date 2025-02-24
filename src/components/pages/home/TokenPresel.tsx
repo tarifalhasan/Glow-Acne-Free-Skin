@@ -1,10 +1,10 @@
 import TransitionErrorDialog from "@/components/pages/home/TransitionErrorDialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { Info, ShoppingBagIcon } from "lucide-react";
+import { HelpCircle, Info, ShoppingBagIcon } from "lucide-react";
 import { useState } from "react";
+import { Tooltip } from "react-tooltip";
 import ReferralInput from "./ReferralInput";
 import TransitionSuccessDIalog from "./TransitionSuccessDIalog";
 export default function TokenPresale() {
@@ -259,14 +259,24 @@ export default function TokenPresale() {
 
               {/* Action Buttons */}
               <div className="space-y-4">
-                <Input
-                  type="text"
-                  id="referral"
-                  placeholder="Enter referral code"
-                  value={referralCode}
-                  onChange={(e) => setReferralCode(e.target.value)}
-                  className="w-full p-2 border h-12 text-[#1D1F2C] text-base rounded-[12px] border-[#92DDE7] bg-[#D3FAFF4D]/30"
-                />
+                <div className=" w-full rounded-[12px] px-2  md:flex-1 h-12 items-center border flex border-[#92DDE7] bg-[#D3FAFF4D]/30">
+                  <input
+                    value={referralCode}
+                    onChange={(e) => setReferralCode(e.target.value)}
+                    placeholder="Https://Yourwebsite.Com/Ref?Ad..."
+                    className="text-base flex-1 px-2  p-0 w-full outline-none focus-within:ring-0 focus:right-0 focus:border-none focus:outline-none bg-transparent border-none text-[#1D1F2C] placeholder:text-[#1D1F2C]"
+                  />
+                  <div
+                    className=" text-gray-500 cursor-pointer"
+                    data-tooltip-id="referral-code-tooltip"
+                  >
+                    <HelpCircle className="h-5 w-5" />
+                  </div>
+                </div>
+
+                <Tooltip id="referral-code-tooltip" place="top">
+                  Enter a referral link to get rewards!
+                </Tooltip>
                 <Button
                   onClick={handleTransiotion}
                   className="w-full  text-sm lg:text-base xl:text-lg font-bold bg-[#92DDE7] hover:bg-[#92DDE7]/90 text-black"
@@ -275,6 +285,20 @@ export default function TokenPresale() {
                   <span className="">Buy</span>
                 </Button>
                 <div className="text-center">Or</div>
+                <div className=" w-full rounded-[12px] px-2  md:flex-1 h-12 items-center border flex border-[#92DDE7] bg-[#D3FAFF4D]/30">
+                  <input
+                    value={referralCode}
+                    onChange={(e) => setReferralCode(e.target.value)}
+                    placeholder="Https://Yourwebsite.Com/Ref?Ad..."
+                    className="text-base flex-1 px-2  p-0 w-full outline-none focus-within:ring-0 focus:right-0 focus:border-none focus:outline-none bg-transparent border-none text-[#1D1F2C] placeholder:text-[#1D1F2C]"
+                  />
+                  <div
+                    className=" text-gray-500 cursor-pointer"
+                    data-tooltip-id="referral-code-tooltip"
+                  >
+                    <HelpCircle className="h-5 w-5" />
+                  </div>
+                </div>
                 <Button
                   variant="outline"
                   className="w-full border-[#92DDE7] bg-[#D3FAFF] text-sm lg:text-base xl:text-lg font-bold"
@@ -330,10 +354,10 @@ export default function TokenPresale() {
                   />
                 </div>
 
-                <h2 className="text-xl mt-6 font-bold text-[#007180] mb-2">
+                <h2 className="text-xl mt-6 font-fredoka-one  text-[#007180] mb-2">
                   Crypto Rewards Referral 🎉
                 </h2>
-                <p className="text-sm lg:text-base leading-[160%] text-[#1D1F2C] mb-1">
+                <p className="text-sm font-figree font-semibold lg:text-base leading-[160%] text-[#1D1F2C] mb-1">
                   Refer & Earn! <span className="text-[#39B0C0]">Get 10%</span>{" "}
                   In ETH, USDT, Or USDC From Your Friends' Purchases Withdraw
                   Anytime! Plus, They{" "}
