@@ -23,12 +23,12 @@ const ReferralInput: React.FC<ReferralInputProps> = ({ referralLink }) => {
   return (
     <div className="flex flex-col w-full px-0 md:flex-row items-center gap-2 mb-6 relative">
       {/* Input Field */}
-      <div className="bg-[#F8FAFB] w-full rounded-[12px] px-2  flex-1 h-12 items-center border flex border-[#92DDE7] bg-[#D3FAFF4D]/30">
+      <div className="bg-[#F8FAFB] w-full rounded-[12px] px-2  md:flex-1 h-12 items-center border flex border-[#92DDE7] bg-[#D3FAFF4D]/30">
         <input
           value={referralLink}
           readOnly
           placeholder="Https://Yourwebsite.Com/Ref?Ad..."
-          className="text-base flex-1  p-0 w-full outline-none focus-within:ring-0 focus:right-0 focus:border-none focus:outline-none bg-transparent border-none text-[#1D1F2C] placeholder:text-[#1D1F2C]"
+          className="text-base flex-1   p-0 w-full outline-none focus-within:ring-0 focus:right-0 focus:border-none focus:outline-none bg-transparent border-none text-[#1D1F2C] placeholder:text-[#1D1F2C]"
         />
         <div
           className=" text-gray-500 cursor-pointer"

@@ -1,12 +1,15 @@
 import TransitionErrorDialog from "@/components/pages/home/TransitionErrorDialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { Info, ShoppingBagIcon } from "lucide-react";
 import { useState } from "react";
 import ReferralInput from "./ReferralInput";
 import TransitionSuccessDIalog from "./TransitionSuccessDIalog";
 export default function TokenPresale() {
+  const [referralCode, setReferralCode] = useState("");
+
   const [selectedToken, setSelectedToken] = useState("ETH");
   const [transitionSubmitSuccessfully, setTranstionSubmitSuccessfully] =
     useState(false);
@@ -256,6 +259,14 @@ export default function TokenPresale() {
 
               {/* Action Buttons */}
               <div className="space-y-4">
+                <Input
+                  type="text"
+                  id="referral"
+                  placeholder="Enter referral code"
+                  value={referralCode}
+                  onChange={(e) => setReferralCode(e.target.value)}
+                  className="w-full p-2 border h-12 text-[#1D1F2C] text-base rounded-[12px] border-[#92DDE7] bg-[#D3FAFF4D]/30"
+                />
                 <Button
                   onClick={handleTransiotion}
                   className="w-full  text-sm lg:text-base xl:text-lg font-bold bg-[#92DDE7] hover:bg-[#92DDE7]/90 text-black"
@@ -330,7 +341,7 @@ export default function TokenPresale() {
                 </p>
               </div>
 
-              <ReferralInput referralLink={"https://fiverr.com"} />
+              <ReferralInput referralLink={referralCode} />
 
               <div className="space-y-3 w-full">
                 {[
